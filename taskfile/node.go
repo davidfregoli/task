@@ -8,7 +8,6 @@ import (
 	"github.com/go-task/task/v3/errors"
 	"github.com/go-task/task/v3/internal/experiments"
 	"github.com/go-task/task/v3/internal/logger"
-	"github.com/go-task/task/v3/taskfile/ast"
 )
 
 type Node interface {
@@ -18,8 +17,8 @@ type Node interface {
 	Dir() string
 	Optional() bool
 	Remote() bool
-	ResolveIncludeEntrypoint(include ast.Include) (string, error)
-	ResolveIncludeDir(include ast.Include) (string, error)
+	ResolveIncludeEntrypoint(entrypoint string) (string, error)
+	ResolveIncludeDir(dir string) (string, error)
 }
 
 func NewRootNode(
