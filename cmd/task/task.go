@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"path/filepath"
 	"strings"
 	"time"
 
@@ -201,14 +200,6 @@ func run() error {
 			return fmt.Errorf("task: Failed to get user home directory: %w", err)
 		}
 		flags.dir = home
-	}
-
-	if flags.dir != "" && flags.entrypoint != "" {
-		return errors.New("task: You can't set both --dir and --taskfile")
-	}
-	if flags.entrypoint != "" {
-		flags.dir = filepath.Dir(flags.entrypoint)
-		flags.entrypoint = filepath.Base(flags.entrypoint)
 	}
 
 	if flags.output.Name != "group" {

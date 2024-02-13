@@ -79,7 +79,7 @@ func (e *Executor) setCurrentDir() error {
 }
 
 func (e *Executor) readTaskfile() error {
-	node, err := taskfile.NewRootNode(e.Dir, e.Entrypoint, e.Insecure)
+	node, err := taskfile.NewRootNode(e.Logger, e.Entrypoint, e.Dir, e.Insecure)
 	if err != nil {
 		return err
 	}
